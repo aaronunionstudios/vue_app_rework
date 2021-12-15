@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Project Guide setup</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        
+
+        <div id="root">
+            <p>Is this an Hello World?</p>
+            <p>{{message}}</p>
+        </div>
+        <script>
+            console.log('Yes! We are using Vue version', Vue.version)
+        </script>
+        <script>
+            var app = new Vue({
+                el: '#root',
+                data (){
+                    return {
+                        message: 'Hello Vue.js',
+                    }
+                }
+            })
+            app.$mount('#root')
+        </script>
+    </body>
+</html>
