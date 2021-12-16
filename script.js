@@ -41,7 +41,7 @@ new Vue({
         },
         addButtonTitle () {
             console.log('fire')
-            return notes.length + 'note(s) already' 
+            return this.notes.length + ' note(s) already' 
         }
     },
 })

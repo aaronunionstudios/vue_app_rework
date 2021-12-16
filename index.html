@@ -14,7 +14,10 @@
             <!-- Sidebar -->
             <aside class="side-bar">
                 <div class="toolbar">
-                    <button @click="addNote" :title="notes.length + ' note(s) already'"><i class="material-icons">add</i> Add note</button>
+                    <button @click="addNote" :title="addButtonTitle"><i class="material-icons">add</i> Add note</button>
+                </div>
+                <div class="notes">
+                    <div class="note" v-for="note of notes">{{note.title}}</div>
                 </div>
             </aside>
             <section class="main">
@@ -25,9 +28,9 @@
             </aside>
         </div>
         <script src="script.js"></script>
-        <script>
+        <!-- <script>
             const html = marked.parse('**Bold** *Italic* [link] (http://vue.js.org/)');
             console.log(html);
-        </script>
+        </script> -->
     </body>
 </html>
