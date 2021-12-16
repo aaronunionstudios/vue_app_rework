@@ -4,7 +4,8 @@ new Vue({
         return {
             // content: 'This is a note.',
             content: localStorage.getItem('content') || 'You can write in **markdown**',
-            notes: []
+            notes: [],
+            selectedId: null,
         }
     },
     watch: {
@@ -14,6 +15,10 @@ new Vue({
         this.content = localStorage.getItem('content') || 'You can write in **markdown**'
     },
     methods: {
+        selectNote (note) {
+            this.selectedId = note.id
+            console.log('selectNote click')
+        },
         addNote () {
             console.log('click')
             const time = Date.now()
@@ -36,8 +41,12 @@ new Vue({
         },
     },
     computed: {
+        selectedNote () {
+            console.log('selectedNote fire')
+            return this.notes.find(note => note.id === this.selectedId)
+        },
         notePreview () {
-            return marked.parse(this.content)
+            return this.selectedNote ? marked.parse(this.selectedNote.content) : ''
         },
         addButtonTitle () {
             console.log('fire')

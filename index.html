@@ -17,11 +17,11 @@
                     <button @click="addNote" :title="addButtonTitle"><i class="material-icons">add</i> Add note</button>
                 </div>
                 <div class="notes">
-                    <div class="note" v-for="note of notes">{{note.title}}</div>
+                    <div class="note" v-for="note of notes" @click="selectNote(note)">{{note.title}}</div>
                 </div>
             </aside>
             <section class="main">
-                <textarea v-model="content"></textarea>
+                <textarea v-model="selectedNote.id"></textarea>
             </section>
             <aside class="preview" v-html="notePreview">
                 <!-- {{notePreview}} -->
