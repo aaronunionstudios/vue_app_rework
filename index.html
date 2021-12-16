@@ -11,6 +11,12 @@
         
 
         <div id="notebook">
+            <!-- Sidebar -->
+            <aside class="side-bar">
+                <div class="toolbar">
+                    <button @click="addNote" :title="notes.length + ' note(s) already'"><i class="material-icons">add</i> Add note</button>
+                </div>
+            </aside>
             <section class="main">
                 <textarea v-model="content"></textarea>
             </section>
