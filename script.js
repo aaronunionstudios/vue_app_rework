@@ -3,13 +3,13 @@ new Vue({
     data () {
         return {
             // content: 'This is a note.',
-            content: localStorage.getItem('content') || 'You can write in **markdown**',
+            // content: localStorage.getItem('content') || 'You can write in **markdown**',
             notes: [],
             selectedId: null,
         }
     },
     watch: {
-        content: 'saveNote',
+        // content: 'saveNote',
     },
     created () {
         this.content = localStorage.getItem('content') || 'You can write in **markdown**'
@@ -31,11 +31,11 @@ new Vue({
             }
             this.notes.push(note)
         },
-        saveNote () {
-            console.log('saving note:', this.content)
-            localStorage.setItem('content', this.content)
-            this.reportOperation('saving')
-        },
+        // saveNote () {
+        //     console.log('saving note:', this.content)
+        //     localStorage.setItem('content', this.content)
+        //     this.reportOperation('saving')
+        // },
         reportOperation (opName) {
             console.log('The', opName, 'operation was completed!')
         },

@@ -20,12 +20,14 @@
                     <div class="note" v-for="note of notes" @click="selectNote(note)">{{note.title}}</div>
                 </div>
             </aside>
-            <section class="main">
-                <textarea v-model="selectedNote.id"></textarea>
-            </section>
-            <aside class="preview" v-html="notePreview">
-                <!-- {{notePreview}} -->
-            </aside>
+            <template v-if="selectedNote">
+                <section class="main">
+                    <textarea v-model="selectedNote.content"></textarea>
+                </section>
+                <aside class="preview" v-html="notePreview">
+                    <!-- {{notePreview}} -->
+                </aside>
+            </template>
         </div>
         <script src="script.js"></script>
         <!-- <script>
