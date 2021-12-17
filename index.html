@@ -17,7 +17,7 @@
                     <button @click="addNote" :title="addButtonTitle"><i class="material-icons">add</i> Add note</button>
                 </div>
                 <div class="notes">
-                    <div class="note" v-for="note of notes" @click="selectNote(note)">{{note.title}}</div>
+                    <div class="note" v-for="note of notes" @click="selectNote(note)" :class="{selected: note === selectedNote}">{{note.title}}</div>
                 </div>
             </aside>
             <template v-if="selectedNote">
