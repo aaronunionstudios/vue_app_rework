@@ -1,31 +1,38 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Vue Project Guide setup</title>
+        <title>Notebook</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <script src="node_modules/marked/marked.min.js"></script>
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
         
 
-        <div id="root">
-            <p>Is this an Hello World?</p>
-            <p>{{message}}</p>
-            <input v-model="message" />
+        <div id="notebook">
+            <!-- Sidebar -->
+            <aside class="side-bar">
+                <div class="toolbar">
+                    <button @click="addNote" :title="addButtonTitle"><i class="material-icons">add</i> Add note</button>
+                </div>
+                <div class="notes">
+                    <div class="note" v-for="note of notes" @click="selectNote(note)" :class="{selected: note === selectedNote}">{{note.title}}</div>
+                </div>
+            </aside>
+            <template v-if="selectedNote">
+                <section class="main">
+                    <textarea v-model="selectedNote.content"></textarea>
+                </section>
+                <aside class="preview" v-html="notePreview">
+                    <!-- {{notePreview}} -->
+                </aside>
+            </template>
         </div>
-        <script>
-            console.log('Yes! We are using Vue version', Vue.version)
-        </script>
-        <script>
-            var app = new Vue({
-                el: '#root',
-                name: 'message app',
-                data (){
-                    return {
-                        message: 'Hello Vue.js',
-                    }
-                }
-            })
-            app.$mount('#root')
-        </script>
+        <script src="script.js"></script>
+        <!-- <script>
+            const html = marked.parse('**Bold** *Italic* [link] (http://vue.js.org/)');
+            console.log(html);
+        </script> -->
     </body>
 </html>
