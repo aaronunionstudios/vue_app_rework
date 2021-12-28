@@ -45,11 +45,14 @@ new Vue({
         reportOperation (opName) {
             console.log('The', opName, 'operation was completed!')
         },
-        // saveNote () {
-        //     console.log('saving note:', this.content)
-        //     localStorage.setItem('content', this.content)
-        //     this.reportOperation('saving')
-        // },
+        removeNote () {
+            if (this.selectedNote && confirm('Delete the note?')) {
+                const index = this.notes.indexOf(this.selectedNote)
+                if (index !== -1) {
+                    this.notes.splice(index, 1)
+                }
+            }
+        },
     },
     computed: {
         selectedNote () {
