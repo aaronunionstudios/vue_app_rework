@@ -79,6 +79,23 @@ new Vue({
             : a.favorite? -1
             : 1)
         },
+        linesCount () {
+            if (this.selectedNote) {
+                return this.selectedNote.content.split(/\r\n|\r|\n/).length
+            }
+        },
+        wordsCount () {
+            var s = this.selectedNote.content
+            s = s.replace(/\n/g, '')
+            s = s.replace(/(^\s*)|(\s*$)/gi, '')
+            s = s.replace(/\s\s+/gi, ' ')
+            return s.split(' ').length
+        },
+        charactersCount () {
+            if (this.selectedNote) {
+                return this.selectedNote.content.split('').length
+            }
+        },
     },
 })
 console.log('restored note:', localStorage.getItem('content'))
