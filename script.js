@@ -1,3 +1,6 @@
+Vue.filter ('date', time => moment(time)
+.format('DD/MM/YY, HH:mm'))
+
 new Vue({
     el: '#notebook',
     data () {
@@ -53,6 +56,9 @@ new Vue({
                 }
             }
         },
+        favoriteNote () {
+            this.selectedNote.favorite ^= true
+        },
     },
     computed: {
         selectedNote () {
@@ -65,7 +71,14 @@ new Vue({
         addButtonTitle () {
             console.log('fire')
             return this.notes.length + ' note(s) already' 
-        }
+        },
+        sortedNotes () {
+            return this.notes.slice ()
+            .sort ((a, b) => a.created - b.created)
+            .sort ((a, b) => (a.favorite === b.favorite) ? 0
+            : a.favorite? -1
+            : 1)
+        },
     },
 })
 console.log('restored note:', localStorage.getItem('content'))
